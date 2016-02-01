@@ -1,0 +1,26 @@
+<div class="labels">
+  <div>
+    <div class="labels__holder o-grid-row">
+      <div class="labels__rep" data-o-grid-colspan="2 push7 Mpush8">Rep.<br/>delegates</div>
+      <div class="labels__dem" data-o-grid-colspan="2 push7 Mpush8">Dem.<br/>delegates</div>
+    </div>
+  </div>
+</div>
+<div class="dates">
+    {{#each .}}
+        <div id="{{formatdateclass date}}" class="date-group {{formatdateclass date}}">
+          <div class="date-heading">{{formatdatedisplay date}}</div>
+          {{#if annotation}}
+            <div class="date-label">
+              <div>
+                <div class="labels__holder o-grid-row">
+                  <div class="labels__date" data-o-grid-colspan="9 push3 Spush2">{{annotation}}</div>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+            {{> date_group .}}
+        </div>
+    {{/each}}
+    <div class="byline"></div>
+</div>

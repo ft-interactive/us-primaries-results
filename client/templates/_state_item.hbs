@@ -1,0 +1,39 @@
+{{#if linkurl}}
+  <a href="{{linkurl}}">
+    <div class="card o-grid-row">
+      <div class="map">
+        <img src="images/{{mapurl}}" alt=""/>
+      </div>
+      <div class="stateinfo">
+        <h3 class="card__title longstate">{{longstate}}</h3>
+        <h3 class="card__title shortstate">{{shortstate}}</h3>
+        <span class="blurb">{{additionalinfo}}</span>
+      </div>
+			<div class="delegates__rep">
+        <div class="delegates__rep--holder">{{#unless repdelegates}}&nbsp;{{/unless}}{{repdelegates}}</div>
+      </div>
+      <div class="delegates__dem">
+        <div class="delegates__dem--holder">{{demdelegates}}</div>
+      </div>
+  	</div>
+  </a>
+{{/if}}
+{{#unless linkurl}}
+  <div class="card o-grid-row"><div class="card__body">
+        <div class="map">
+          <img src="images/{{mapurl}}" alt=""/>
+        </div>
+        <div class="stateinfo">
+          <h3 class="card__title longstate">{{longstate}}</h3>
+          <h3 class="card__title shortstate">{{shortstate}}</h3>
+          <span class="blurb">{{additionalinfo}}</span>
+        </div>
+        <div class="delegates__rep">
+          <div class="delegates__rep--holder">{{#unless repdelegates}}&nbsp;{{/unless}}{{repdelegates}}</div>
+        </div>
+        <div class="delegates__dem">
+          <div class="delegates__dem--holder">{{demdelegates}}</div>
+        </div>
+     </div>
+  </div>
+{{/unless}}
