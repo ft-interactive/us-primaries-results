@@ -90,33 +90,54 @@ main {
   color: #2e6e9e;
 }
 
-.video-player {
-  float: none;
-  max-width: 600px;
-  margin: 10px auto 40px;
-}
-
-.video-container {
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container embed,
-.video-container iframe,
-.video-container object {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .dates,
 .labels {
   @include oGridColspan((default: 12, M: 10, L: 8));
   @include oGridCenter;
+}
+
+.charts {
+  @include oGridColspan((default: 12, M: 12, L: 10));
+  @include oGridCenter;
+}
+
+.chart-title {
+  text-align: center;
+  font-weight: 200; 
+  font-size: 24px;
+  color: oColorsGetPaletteColor('grey-tint5');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.candidate__name,
+.candidate__bar,
+.candidate__value {
+  display: inline-block;
+}
+
+.candidate__name {
+  width: 85px;
+  font-size: 14px;
+  color: oColorsGetPaletteColor('pink-tint5');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: right;
+}
+
+.candidate__bar {
+  position: relative;
+  top: 5px;
+  height: 20px;
+  &.candidate__bar--Democrat {
+    background: $dem;
+  }
+  &.candidate__bar--Republican {
+    background: $rep;
+  }
+}
+
+.candidate__value {
+  font-size: 13px;
 }
 
 .dates a {
@@ -125,6 +146,7 @@ main {
     text-decoration: underline;
   }
 }
+
 .date-label {
   font-size: 12px;
   position: relative;

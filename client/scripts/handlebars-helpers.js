@@ -9,6 +9,14 @@ Handlebars.registerHelper('upperCase', function (content) {
   return content.toUpperCase();
 });
 
+Handlebars.registerHelper('divide', function (num) {
+  // console.log(num)
+  var width = (num / 2100) * 100 + '%';
+  console.log(width)
+  if (width !== '0%') { width += '; min-width: 1px;'}
+  return width;
+});
+
 Handlebars.registerHelper('formatdateclass', function (date) {
   var newDate = new Date(date);
 
