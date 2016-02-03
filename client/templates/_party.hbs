@@ -1,7 +1,15 @@
-<div class="chart-holder" data-o-grid-colspan="6">
-  <div class="chart-title">{{party}}</div>
+<div class="chart-holder" data-o-grid-colspan="12">
+  <div class="chart-title">{{capitalLetter party}}</div>
+  <div class="party-blurb {{party}}"></div>
+  <div class="labels">
+    <div>
+      <div class="labels__holder o-grid-row">
+        <div class="labels__dem" data-o-grid-colspan="4 M2 push8 Mpush10">Delegates</div>
+      </div>
+    </div>
+  </div>
   {{#each candidate}}
-    <div class="candidate">
+    <div class="candidate o-grid-row">
       {{> candidate_item .}}
     </div>
   {{/each}}

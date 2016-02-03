@@ -7,7 +7,7 @@ $o-grid-is-silent:  false;
 
 @import 'fonts';
 
-$o-grid-gutters: (default: 10px);
+
 $rep: #b3244b;
 $dem: #273c8f;
 
@@ -21,6 +21,8 @@ body {
 
 main {
   padding: 0 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .site-header {
@@ -59,8 +61,6 @@ main {
   position: relative;
   font-weight: normal;
   margin: 6px 0 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 .logo {
   width: 32px;
@@ -81,8 +81,6 @@ main {
   color: #505050;
   line-height: 22px;
   text-align: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .intro a {
@@ -90,24 +88,48 @@ main {
   color: #2e6e9e;
 }
 
-.dates,
 .labels {
-  @include oGridColspan((default: 12, M: 10, L: 8));
-  @include oGridCenter;
+  @include oGridColspan((default: 12));
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
+.results {
+  margin-top: 24px;
+}
+.party-chart-holder {
+  overflow: auto;
+}
+.chart-holder {
+  margin-bottom: 24px;
+}
 .charts {
-  @include oGridColspan((default: 12, M: 12, L: 10));
+  @include oGridColspan((default: 12, M: 10, L: 8, XL: 6));
   @include oGridCenter;
 }
 
 .chart-title {
-  text-align: center;
+  text-align: left;
   font-weight: 200; 
-  font-size: 24px;
+  font-size: 26px;
+  margin-bottom: 12px;
+  padding-bottom: 2px;
   color: oColorsGetPaletteColor('grey-tint5');
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  border-bottom: 1px solid oColorsGetPaletteColor('pink-tint3');
+}
+
+.party-blurb {
+  color: oColorsGetPaletteColor('grey-tint5');
+  font-size: 15px;
+  margin-bottom: 20px;
+  font-weight: 200;
+}
+
+.candidate {
+  height: 34px;
+  border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
+  margin-bottom: 4px;
 }
 .candidate__name,
 .candidate__bar,
@@ -119,167 +141,40 @@ main {
   width: 85px;
   font-size: 14px;
   color: oColorsGetPaletteColor('pink-tint5');
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: right;
+  > p {
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    top: -12px;
+  }
+  > img {
+    width: 30px;
+  }
+}
+
+.bar-holder {
+  padding-top: 3px;
 }
 
 .candidate__bar {
-  position: relative;
-  top: 5px;
-  height: 20px;
-  &.candidate__bar--Democrat {
+  height: 24px;
+  &.candidate-bar-democrat {
     background: $dem;
   }
-  &.candidate__bar--Republican {
+  &.candidate-bar-republican {
     background: $rep;
   }
 }
 
 .candidate__value {
   font-size: 13px;
-}
-
-.dates a {
-  text-decoration: none;
-  &:hover h3 {
-    text-decoration: underline;
-  }
-}
-
-.date-label {
-  font-size: 12px;
-  position: relative;
-  top: -14px;
-  color: oColorsGetPaletteColor('pink-tint5');
-}
-.map {
-  @include oGridColspan((default: 3, S: 2, M: 2, L: 2));
-}
-
-.stateinfo {
-  @include oGridColspan((default: 4, S: 5, M: 6));
-}
-
-.labels__holder {
-  margin-left: 20px;
-  margin-bottom: 4px;
-}
-
-.labels__rep,
-.labels__dem {
-  font-size: 12px;
-  text-align: center;
-  min-width: 50px;
-}
-
-.delegates__dem,
-.delegates__rep {
-  @include oGridColspan((default: 2));
-  font-size: 20px;
-  font-weight: 200;
   text-align: right;
-}
-
-.delegates__rep--holder,
-.delegates__dem--holder {
-  text-align: center;
-}
-
-.date-group {
-  margin: 0 auto;
-  padding-top: 10px;
-  border-radius: 0 0 4px 4px;
-  border-top: 1px solid oColorsGetPaletteColor('pink-tint4');
-}
-
-.date-group .card:last-child {
-  border-bottom: 0;
-}
-
-.date-heading {
-  width: 50px;
-  overflow: hidden;
-  float: left;
-  font-size: 12px;
-}
-
-.card {
-  // display: block;
-  position: relative;
-  overflow: hidden;
+  padding-right: 10px;
   box-sizing: border-box;
-  border-bottom: 1px solid #e9decf;
-  margin-left: 20px;
-  padding: 5px 0;
+  position: relative;
+  top: 6px;
 }
-
-.card__body {
-  display: relative;
-  width: 100%;
-}
-
-.longstate {
-  display: none;
-}
-
-
-.longstate,
-.shortstate {
-  font-family: oFontsGetFontFamilyWithFallbacks(MetricWeb);
-  font-weight: 500;
-  color: oColorsGetPaletteColor('grey-tint5');
-  font-size: 18px;
-  margin: 4px 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.shortstate {
-  font-size: 14px;
-}
-
-.map img {
-  width: 100%;
-  max-width: 70px;
-}
-
-.stateinfo {
-  // padding-left: 10px;
-}
-
-.blurb {
-  display: none;
-}
-
-.delegates__rep {
-  color: $rep;
-}
-
-.delegates__dem {
-  color: $dem;
-}
-
-
-.stateinfo h3 {
-  margin: 0 0 4px;
-}
-
-.img-holder {
-  // overflow: hidden;
-}
-
-// Blurb: */
-.standfirst {
-  font-family: oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
-  font-size: 16px;
-  color: #505050;
-  line-height: 22px;
-  margin-top: 14px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 
 
 
@@ -347,7 +242,7 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
   > ul {
     list-style: none;
     padding-left: 0;
-
+    margin-bottom: 8px;
     > li {
       display: inline-block;
     }
@@ -373,7 +268,13 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
 
     > span { @include visually-hidden; }
   }
-
+  &:after {
+    display: block;
+    content: '';
+    border-bottom: 1px solid oColorsGetPaletteColor('pink-tint4');
+    width: 100px;
+    margin: 0 auto;
+  }
 }
 
 //credits
@@ -421,11 +322,23 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
     top: 6px;
     margin-right: 14px;
   }
-  .shortstate {
-    display: none;
+  .bar-holder {
+    height: 40px;
+    padding-top: 8px;
   }
-  .longstate {
-    display: block;
+  .candidate {
+    height: 44px;
+  }
+  .candidate__name {
+    > p {
+      top: -16px;
+    }
+    > img {
+      width: 40px;
+    }
+  }
+  .candidate__value {
+    top: 12px;
   }
 }
 
@@ -440,32 +353,8 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
     top: 8px;
   }
   .intro {
-      font-size: 1.3em;
-      line-height: 1.4em;
-    }
-  .card {
-    padding: 10px 0;
-    margin-left: 40px;
-  }
-  .date-label {
-    padding-left: 8px;
-    font-size: 14px;
-  }
-  .blurb {
-    display: block;
-    color: oColorsGetPaletteColor('pink-tint5');
-    font-size: 14px;
-  }
-  .date-heading {
-    font-size: 14px;
-  }
-  .labels__rep,
-  .labels__dem {
-    font-size: 14px;
-  }
-  .delegates__dem,
-  .delegates__rep {
-    font-size: 24px;
+    font-size: 1.3em;
+    line-height: 1.4em;
   }
 }
 
@@ -485,7 +374,9 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
   }
 }
 
-
+[data-o-grid-colspan] {
+    padding-left: 5px;
+}
 // // fix for position of profile arrow in link on webkit browsers
 
 // @media screen and (-webkit-min-device-pixel-ratio:0) {  

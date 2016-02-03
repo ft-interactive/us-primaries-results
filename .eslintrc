@@ -12,3 +12,15 @@ rules:
   camelcase: 0
   no-undef: 0
   no-unused-vars: 0
+  key-spacing: 0
+  comma-spacing: 0
+  quote-props: 0
+  eol-last: 0
+  wrap-iife: 0
+  space-before-function-paren: 0
+  space-before-blocks: 0
+  brace-style: 0
+  dot-notation: 0
+  space-infix-ops: 0
+  no-extra-semi: 0
+  quotes: 0

@@ -9,11 +9,13 @@ Handlebars.registerHelper('upperCase', function (content) {
   return content.toUpperCase();
 });
 
+Handlebars.registerHelper('capitalLetter', function (content) {
+  return content.charAt(0).toUpperCase() + content.slice(1);
+});
+
 Handlebars.registerHelper('divide', function (num) {
-  // console.log(num)
-  var width = (num / 2100) * 100 + '%';
-  console.log(width)
-  if (width !== '0%') { width += '; min-width: 1px;'}
+  var width = (num / spreadsheet.options.delegatesdivisor) * 100 + '%';
+  if (width !== '0%') { width += '; min-width: 1px;';}
   return width;
 });
 

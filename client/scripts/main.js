@@ -17,56 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
   attachFastClick(document.body);
 
   // YOUR CODE HERE!
-  var dateNames = [];
-  var dates = [];
   var dataset = spreadsheet.data;
-  var dateTitles = spreadsheet.dates;
-  var results = spreadsheet.results;
+  var results = spreadsheet.results; // [{"value":22,"party":"democrat","label":"Hillary Clinton"},{"value":21,"party":"democrat","label":"Bernie Sanders"},{"value":7,"party":"republican","label":"Tom O'Malley"},{"value":8,"party":"republican","label":"Donald Trump"},{"value":7,"party":"republican","label":"Ted Cruz"},{"value":3,"party":"republican","label":"Marco Rubio"},{"value":1,"party":"republican","label":"Ben Carson"},{"value":0,"party":"republican","label":"Rand Paul"},{"value":0,"party":"republican","label":"Jeb Bush"},{"value":0,"party":"republican","label":"Chris Christie"},{"value":0,"party":"republican","label":"Mike Huckabee"},{"value":0,"party":"republican","label":"John Kasich"},{"value":0,"party":"republican","label":"Carly Fiorina"},{"value":0,"party":"republican","label":"Rick Santorum"},{"value":0,"party":"republican","label":"Jim Gilmore"}];
   var candidates = [];
   var partyNames = [];
   var credits = spreadsheet.credits;
 
- // put the dataset into groups and add the corresponding indicators
-  dateTitles.forEach(function (row) {
-    dateNames.push(row.date);
-    dates.push({
-      date: row.date,
-      annotation: row.annotation,
-      state: []
-    });
-  });
-
-  dataset.forEach(function (row) {
-    var dateIndex = dateNames.indexOf(row.date);
-    dates[dateIndex].state.push(row);
-  });
-
-  // sort dataset into date order
-  dates.sort(function (a, b) {
-    if (a.date > b.date) return 1;
-    if (a.date < b.date) return -1;
-    return 0;
-  });
-
-  // sort each date into alphabetical state order
-  dates.forEach(function (date) {
-    date.state.sort(function (a, b) {
-      if (a.longstate > b.longstate) return 1;
-      if (a.longstate < b.longstate) return -1;
-      return 0;
-    });
-  });
 
   document.querySelector('main').innerHTML = mainTemplate(spreadsheet);
-
-  var datesHTML = dateTemplate(dates, {
-    partials: {
-      state_item,
-      date_group
-    }
-  });
-
-  document.querySelector('.content').innerHTML = datesHTML;
 
   results.forEach(function (row) {
     if (partyNames.indexOf(row.party) === -1) {
@@ -80,13 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
     candidates[partyIndex].candidate.push(row);
   });
 
-var resultsHTML = resultsTemplate(candidates, {
+  // sort each result into value order
+  candidates.forEach(function (result) {
+    result.candidate.sort(function (b, a) {
+      if (a.value > b.value) return 1;
+      if (a.value < b.value) return -1;
+      return 0;
+    });
+  });
+
+  var resultsHTML = resultsTemplate(candidates, {
     partials: {
       candidate_item,
       party
     }
   });
- document.querySelector('.results').innerHTML = resultsHTML;
+  console.log(candidates);
+  document.querySelector('.results').innerHTML = resultsHTML;
+  document.querySelector('.party-blurb.democrat').innerHTML = spreadsheet.options.demresultsblurb;
+  document.querySelector('.party-blurb.republican').innerHTML = spreadsheet.options.represultsblurb;
 
   // add headers to each date based on date sheets
   // dateTitles.forEach(function (row, indx) {
