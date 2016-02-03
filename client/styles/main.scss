@@ -168,12 +168,13 @@ main {
 }
 
 .candidate__value {
-  font-size: 13px;
+  font-size: 18px;
   text-align: right;
   padding-right: 10px;
   box-sizing: border-box;
   position: relative;
-  top: 6px;
+  top: 4px;
+  font-weight: 200;
 }
 
 
@@ -338,7 +339,7 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
     }
   }
   .candidate__value {
-    top: 12px;
+    top: 8px;
   }
 }
 
