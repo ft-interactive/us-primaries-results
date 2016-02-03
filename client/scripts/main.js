@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   var partyNames = [];
   var credits = spreadsheet.credits;
 
-
   document.querySelector('main').innerHTML = mainTemplate(spreadsheet);
 
   results.forEach(function (row) {
