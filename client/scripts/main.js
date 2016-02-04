@@ -38,21 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // sort each result into value order
-  candidates.forEach(function (result) {
-    result.candidate.sort(function (b, a) {
-      if (a.value > b.value) return 1;
-      if (a.value < b.value) return -1;
-      return 0;
-    });
-  });
+  candidates.forEach(function (party) {
+    var highest_score = party.candidate.reduce((n, candidate) => {
+      return candidate.value > n ? candidate.value : n;
+    },0);
+    party.candidate.forEach(candidate => candidate.percent_difference = candidate.value / highest_score * 100);
+    party.candidate.sort((b, a) => a.value > b.value ? 1 : a.value < b.value ? -1 : 0);
 
-  var resultsHTML = resultsTemplate(candidates, {
+   var resultsHTML = resultsTemplate(candidates, {
     partials: {
       candidate_item,
       party
     }
   });
-  console.log(candidates);
   document.querySelector('.results').innerHTML = resultsHTML;
   document.querySelector('.party-blurb.democrat').innerHTML = spreadsheet.options.demresultsblurb;
   document.querySelector('.party-blurb.republican').innerHTML = spreadsheet.options.represultsblurb;
