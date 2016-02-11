@@ -24,3 +24,4 @@ rules:
   space-infix-ops: 0
   no-extra-semi: 0
   quotes: 0
+  no-nested-ternary: 0

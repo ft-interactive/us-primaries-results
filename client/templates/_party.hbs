@@ -4,12 +4,12 @@
   <div class="labels">
     <div>
       <div class="labels__holder o-grid-row">
-        <div class="labels__dem" data-o-grid-colspan="4 M2 push8 Mpush10">Delegates</div>
+        <div class="labels__dem" data-o-grid-colspan="4 M2 push8 Mpush10">Pledged<br/>delegates</div>
       </div>
     </div>
   </div>
   {{#each candidate}}
-    <div class="candidate o-grid-row">
+    <div class="candidate o-grid-row {{#if droppedout}}dropout{{/if}}">
       {{> candidate_item .}}
     </div>
   {{/each}}

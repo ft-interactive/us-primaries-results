@@ -83,7 +83,8 @@ main {
   text-align: center;
 }
 
-.intro a {
+.intro a,
+.party-blurb a {
   text-decoration: none;
   color: #2e6e9e;
 }
@@ -124,12 +125,19 @@ main {
   font-size: 15px;
   margin-bottom: 20px;
   font-weight: 200;
+  line-height: 21px;
+  span {
+    font-weight: 600;
+  }
 }
 
 .candidate {
   height: 34px;
   border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
   margin-bottom: 4px;
+}
+.dropout {
+  opacity: 0.4;
 }
 .candidate__name,
 .candidate__bar,
@@ -159,10 +167,15 @@ main {
 
 .candidate__bar {
   height: 24px;
-  &.candidate-bar-democrat {
+  text-align: right;
+  // padding-right: 5px;
+  color: #ffffff;
+  padding-top: 2px;
+  box-sizing: border-box;
+  &.candidate__bar--democrats {
     background: $dem;
   }
-  &.candidate-bar-republican {
+  &.candidate__bar--republicans {
     background: $rep;
   }
 }

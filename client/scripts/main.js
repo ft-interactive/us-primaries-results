@@ -39,21 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // sort each result into value order
   candidates.forEach(function (party) {
-    var highest_score = party.candidate.reduce((n, candidate) => {
-      return candidate.value > n ? candidate.value : n;
-    },0);
+    var highest_score = party.candidate.reduce((n, candidate) => candidate.value > n ? candidate.value : n, 0);
     party.candidate.forEach(candidate => candidate.percent_difference = candidate.value / highest_score * 100);
-    party.candidate.sort((b, a) => a.value > b.value ? 1 : a.value < b.value ? -1 : 0);
-
-   var resultsHTML = resultsTemplate(candidates, {
+    party.candidate.sort((b, a) => a.value > b.value ? 1 : (a.value < b.value ? -1 : 0));
+  });
+  var resultsHTML = resultsTemplate(candidates, {
     partials: {
       candidate_item,
       party
     }
   });
   document.querySelector('.results').innerHTML = resultsHTML;
-  document.querySelector('.party-blurb.democrat').innerHTML = spreadsheet.options.demresultsblurb;
-  document.querySelector('.party-blurb.republican').innerHTML = spreadsheet.options.represultsblurb;
+  document.querySelector('.party-blurb.democrats').innerHTML = spreadsheet.options.demresultsblurb;
+  document.querySelector('.party-blurb.republicans').innerHTML = spreadsheet.options.represultsblurb;
 
   // add headers to each date based on date sheets
   // dateTitles.forEach(function (row, indx) {

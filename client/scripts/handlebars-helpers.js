@@ -13,6 +13,11 @@ Handlebars.registerHelper('capitalLetter', function (content) {
   return content.charAt(0).toUpperCase() + content.slice(1);
 });
 
+// Handlebars.registerHelper('delegateCheck', function (num) {
+//   if (num > 0);
+//     return num;
+// });
+
 Handlebars.registerHelper('formatdateclass', function (date) {
   var newDate = new Date(date);
 
