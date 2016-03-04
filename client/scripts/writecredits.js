@@ -1,4 +1,4 @@
-function writeCredits(creditsData) {
+export default function writeCredits(creditsData) {
   var credits = [];
   var source = [];
   var other = [];

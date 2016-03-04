@@ -9,6 +9,10 @@ Handlebars.registerHelper('upperCase', function (content) {
   return content.toUpperCase();
 });
 
+Handlebars.registerHelper('addCommas', function (content) {
+  return content.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+});
+
 Handlebars.registerHelper('capitalLetter', function (content) {
   return content.charAt(0).toUpperCase() + content.slice(1);
 });

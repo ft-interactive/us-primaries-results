@@ -130,7 +130,21 @@ main {
     font-weight: 600;
   }
 }
+.delegates,
+.superdelegates {
+  position: relative;
+  top: 2px;
+  font-size: 18px;
+  vertical-align: middle;
+  margin-left: -2px;
+}
+.delegates {
+  color: $dem;
+}
 
+.superdelegates {
+  color: lighten($dem, 40);
+}
 .candidate {
   height: 34px;
   border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
@@ -174,6 +188,10 @@ main {
   box-sizing: border-box;
   &.candidate__bar--democrats {
     background: $dem;
+    float: left;
+  }
+  &.candidate__bar--democrats--superdel {
+    background: lighten($dem, 30);
   }
   &.candidate__bar--republicans {
     background: $rep;
@@ -370,6 +388,14 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
     font-size: 1.3em;
     line-height: 1.4em;
   }
+  .delegates,
+  .superdelegates {
+    position: relative;
+    top: -1px;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-left: -2px;
+  }
 }
 
  @include oGridRespondTo(L) {
@@ -393,14 +419,14 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
 }
 // // fix for position of profile arrow in link on webkit browsers
 
-// @media screen and (-webkit-min-device-pixel-ratio:0) {  
-//   .story-promo {
+@media screen and (-webkit-min-device-pixel-ratio:0) {  
+  @include oGridRespondTo(L) {
+    .delegates,
+    .superdelegates {
+      top: -2px;
+      font-size: 40px;
+      margin-left: -2px;
+    }
+  }
+}
 
-//     & > .link {
-
-//       &:after {
-//         bottom: -38px;
-//       }
-//     }
-//   }  
-// }
