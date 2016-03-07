@@ -176,7 +176,9 @@ main {
 }
 
 .bar-holder {
-  padding-top: 3px;
+  margin-top: 3px;
+  height: 25px;
+  background-color: oColorsGetPaletteColor('pink-tint2');
 }
 
 .candidate__bar {
@@ -199,13 +201,16 @@ main {
 }
 
 .candidate__value {
-  font-size: 18px;
+  font-size: 16px;
   text-align: right;
   padding-right: 10px;
   box-sizing: border-box;
   position: relative;
   top: 4px;
   font-weight: 200;
+  & span {
+    font-weight: 600;
+  }
 }
 
 
@@ -355,8 +360,7 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
     margin-right: 14px;
   }
   .bar-holder {
-    height: 40px;
-    padding-top: 8px;
+    margin-top: 8px;
   }
   .candidate {
     height: 44px;
@@ -428,5 +432,9 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
       margin-left: -2px;
     }
   }
+}
+
+[data-o-grid-colspan] {
+  padding-left: 0;
 }
 

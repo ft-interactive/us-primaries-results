@@ -2,8 +2,8 @@
   <p>{{label}}</p>
   <img class="headshot" src="images/{{headshot}}" alt=""/>
 </div>
-<div class="bar-holder {{party}}" data-o-grid-colspan="5 S7 M8">
+<div class="bar-holder {{party}}" data-o-grid-colspan="4 S6 M7">
   <div class="candidate__bar candidate__bar--{{party}}" style="width:{{percent_difference}}%" ></div>
   <div class="candidate__bar candidate__bar--{{party}}--superdel" style="width:{{percent_difference_superdel}}%" ></div>
 </div>
-<div class="candidate__value" data-o-grid-colspan="2 S1">{{addCommas total}}</div>
+<div class="candidate__value" data-o-grid-colspan="3 S2"><span class="deltotal">{{addCommas total}}</span>/{{addCommas totaldel}}</div>

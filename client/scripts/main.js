@@ -36,14 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
     var partyIndex = partyNames.indexOf(row.party);
     candidates[partyIndex].candidate.push(row);
   });
-
   // sort each result into value order
   candidates.forEach(function (party) {
-    var highest_score = party.candidate.reduce((n, candidate) => candidate.total > n ? candidate.total : n, 0);
+    var highest_score;
+    if (party.party === 'democrats') {
+      highest_score = spreadsheet.options.demdelegatestotal;
+    } else if (party.party === 'republicans') {
+      highest_score = spreadsheet.options.repdelegatestotal;
+    }
+    party.candidate.forEach(candidate => candidate.totaldel = highest_score);
     party.candidate.forEach(candidate => candidate.percent_difference = candidate.value / highest_score * 100);
     party.candidate.forEach(candidate => candidate.percent_difference_superdel = candidate.superdelegates / highest_score * 100);
     party.candidate.sort((b, a) => a.total > b.total ? 1 : (a.total < b.total ? -1 : 0)); // eslint-disable-line no-nested-ternary
   });
+  console.log(candidates);
   var resultsHTML = resultsTemplate(candidates, {
     partials: {
       candidate_item,
