@@ -75,7 +75,7 @@ main {
 .intro {
   max-width: 720px;
   margin: 0 auto;
-  margin-bottom: 1em;
+  margin-bottom: 0.6em;
   font-family: oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
   font-size: 16px;
   color: #505050;
@@ -89,6 +89,13 @@ main {
   color: #2e6e9e;
 }
 
+.date {
+  text-align: center;
+  font-size: 12px;
+}
+.updated {
+  color: oColorsGetPaletteColor('claret');
+}
 .labels {
   @include oGridColspan((default: 12));
   text-align: right;
@@ -391,6 +398,9 @@ $linked-in-logo: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3
   .intro {
     font-size: 1.3em;
     line-height: 1.4em;
+  }
+  .date {
+    font-size: 14px;
   }
   .delegates,
   .superdelegates {

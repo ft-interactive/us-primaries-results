@@ -1,5 +1,5 @@
 var Handlebars = require('hbsfy/runtime');
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 Handlebars.registerHelper('join', function (array, separator) {
   return array.join(separator);
@@ -51,6 +51,7 @@ Handlebars.registerHelper('formatdatedisplay', function (date) {
   if (newDate !== null) {
     html = months[newDate.getUTCMonth()];
     html += ' ' + newDate.getUTCDate();
+    html += ', ' + newDate.getUTCFullYear();
   }
   // console.log(newDate.getUTCDate())
   return new Handlebars.SafeString(html);
