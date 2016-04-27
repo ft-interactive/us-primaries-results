@@ -182,6 +182,11 @@ main {
   }
 }
 
+.note {
+  font-size: 14px;
+  color: oColorsGetPaletteColor('pink-tint5');
+}
+
 .bar-holder {
   margin-top: 3px;
   height: 25px;

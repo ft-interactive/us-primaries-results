@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.results').innerHTML = resultsHTML;
   document.querySelector('.party-blurb.democrats').innerHTML = spreadsheet.options.demresultsblurb;
   document.querySelector('.party-blurb.republicans').innerHTML = spreadsheet.options.represultsblurb;
+  document.querySelector('.note.democrats').innerHTML = 'Superdelegates (' + results[0].label + ': ' + results[0].superdelegates + ', ' + results[1].label + ': ' + results[1].superdelegates +')';
 
   // add headers to each date based on date sheets
   // dateTitles.forEach(function (row, indx) {
