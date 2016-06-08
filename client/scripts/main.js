@@ -39,15 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // sort each result into value order
   candidates.forEach(function (party) {
     var highest_score;
+    var totaldel;
+    party.candidate.sort((b, a) => a.total > b.total ? 1 : (a.total < b.total ? -1 : 0)); // eslint-disable-line no-nested-ternary
     if (party.party === 'democrats') {
-      highest_score = spreadsheet.options.demdelegatestotal;
+      totaldel = spreadsheet.options.demdelegatestotal;
+      highest_score = party.candidate[0].total;
     } else if (party.party === 'republicans') {
-      highest_score = spreadsheet.options.repdelegatestotal;
+      totaldel = spreadsheet.options.repdelegatestotal;
+      highest_score = party.candidate[0].total;
     }
-    party.candidate.forEach(candidate => candidate.totaldel = highest_score);
+    party.candidate.forEach(candidate => candidate.totaldel = totaldel);
     party.candidate.forEach(candidate => candidate.percent_difference = candidate.value / highest_score * 100);
     party.candidate.forEach(candidate => candidate.percent_difference_superdel = candidate.superdelegates / highest_score * 100);
-    party.candidate.sort((b, a) => a.total > b.total ? 1 : (a.total < b.total ? -1 : 0)); // eslint-disable-line no-nested-ternary
   });
   console.log(candidates);
   var resultsHTML = resultsTemplate(candidates, {
